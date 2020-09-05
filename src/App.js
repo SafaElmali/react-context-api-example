@@ -1,26 +1,36 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+const App = () => {
+  const [title, setTitle] = useState("Hello World")
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <HeaderContainer title={title} />
+  )
 }
+
+const HeaderContainer = (props) => {
+  const { title } = props;
+  return (
+    <HeaderBackground>
+      <HeaderTitle title={title} />
+    </HeaderBackground>
+  )
+}
+
+
+const HeaderBackground = (props) => {
+  return (
+    <div className="header-image">{props.children}</div>
+  )
+}
+
+const HeaderTitle = (props) => {
+  const { title } = props;
+
+  return (
+    <p>{title}</p>
+  )
+}
+
 
 export default App;
