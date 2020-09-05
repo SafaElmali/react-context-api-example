@@ -1,22 +1,35 @@
-import React, { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState, createContext } from 'react';
 import './App.css';
 
-const App = () => {
+// Our Header Context
+const Context = createContext();
+
+const ContextProvider = (props) => {
   const [title, setTitle] = useState("Hello World")
+
   return (
-    <HeaderContainer title={title} />
+    <Context.Provider value={title}>
+      {props.children}
+    </Context.Provider>
   )
 }
 
-const HeaderContainer = (props) => {
-  const { title } = props;
+const App = () => {
+  return (
+    <ContextProvider>
+      <HeaderContainer />
+    </ContextProvider>
+  )
+}
+
+const HeaderContainer = () => {
   return (
     <HeaderBackground>
-      <HeaderTitle title={title} />
+      <HeaderTitle />
     </HeaderBackground>
   )
 }
-
 
 const HeaderBackground = (props) => {
   return (
@@ -24,11 +37,13 @@ const HeaderBackground = (props) => {
   )
 }
 
-const HeaderTitle = (props) => {
-  const { title } = props;
-
+const HeaderTitle = () => {
   return (
-    <p>{title}</p>
+    <Context.Consumer>
+      {(context) => (
+        <p>{context}</p>
+      )}
+    </Context.Consumer>
   )
 }
 
