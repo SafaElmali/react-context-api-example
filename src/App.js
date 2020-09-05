@@ -8,10 +8,15 @@ const Context = createContext();
 const ContextProvider = (props) => {
   const [title, setTitle] = useState("Hello World")
 
+  const handleTitleChange = () => setTitle('Yeyyy! Title Changed!🥳');
+
   return (
-    <Context.Provider value={title}>
+    <Context.Provider value={{
+      title,
+      setHeaderTitle: handleTitleChange
+    }}>
       {props.children}
-    </Context.Provider>
+    </Context.Provider >
   )
 }
 
@@ -27,13 +32,14 @@ const HeaderContainer = () => {
   return (
     <HeaderBackground>
       <HeaderTitle />
+      <HeaderButton />
     </HeaderBackground>
   )
 }
 
 const HeaderBackground = (props) => {
   return (
-    <div className="header-image">{props.children}</div>
+    <div className="header">{props.children}</div>
   )
 }
 
@@ -41,11 +47,20 @@ const HeaderTitle = () => {
   return (
     <Context.Consumer>
       {(context) => (
-        <p>{context}</p>
+        <p>{context.title}</p>
       )}
     </Context.Consumer>
   )
 }
 
+const HeaderButton = () => {
+  return (
+    <Context.Consumer>
+      {(context) => (
+        <button onClick={context.setHeaderTitle}>Click me to change Title</button>
+      )}
+    </Context.Consumer>
+  )
+}
 
 export default App;

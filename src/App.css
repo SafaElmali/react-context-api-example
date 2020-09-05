@@ -3,25 +3,41 @@ html {
   margin: 0;
   padding: 0;
   font-size: 16px;
-  background: url("https://images.unsplash.com/photo-1548107846-6b3a3b848881?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") no-repeat fixed;
 }
 
-.header-image {
-  height: 100%;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
+.header {
+  background: url("https://images.unsplash.com/photo-1548107846-6b3a3b848881?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80") no-repeat;
+  background-size: cover;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
+  min-height: 100vh;
 }
 
-.header-image p {
+.header p {
   font-size: 5em;
   font-weight: 400;
   font-family: sans-serif;
   color: #ffff;
+}
+
+.header button {
+  border: none;
+  padding: 1em;
+  margin: 1em;
+  border-radius: 2em;
+  transition: all 0.5s ease-in-out;
+  background: #fff;
+  cursor: pointer;
+}
+
+.header button:hover {
+  background: #03a9f4;
+  color: #fff;
+}
+
+.header button:focus{
+  outline: none;
 }
