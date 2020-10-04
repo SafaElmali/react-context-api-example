@@ -16,8 +16,21 @@
 
 ## How To Install ? 
 
-- Go to project folder and run ```npm install``` 
-- In your terminal, type ```npm start``` to run the app in the development mode.
+[npm]():
+
+- First install node_modules:
+
+```sh
+npm install
+```
+
+- Then you can run:
+
+```sh
+npm start
+```
+
+- Runs the app in the development mode. Open http://localhost:3000 to view it in the browser.
 
 ## License
 
